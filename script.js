@@ -37,17 +37,13 @@ const pointButton = document.querySelector('.pointButton')
 const deleteButton = document.querySelector('.deleteButton')
 
 equalsButton.addEventListener('click', evaluate)
-
 clearButton.addEventListener('click', clear)
-
 pointButton.addEventListener('click', appendPoint)
-
 deleteButton.addEventListener('click', deleteNumber)
-
 window.addEventListener('keydown', handleKeyboardInput)
 
 numberButtons.forEach((button) => 
-button.addEventListener('click', () => appendNumber(button.textContent))
+    button.addEventListener('click', () => appendNumber(button.textContent))
 )
 
 operatorButtons.forEach((button) => 
@@ -67,23 +63,21 @@ function resetScreen() {
 
 function setOperation(operator) {
     if (currentOperation !== null) {
-        if (screenIsResult) {
-            firstOperand = screenCurrent.textContent
-            currentOperation = operator
-            screenLast.textContent = `${firstOperand} ${currentOperation}`
-            screenCurrent.textContent = ''
-        } else {
+        if (screenIsResult) updateScreen(operator)
+            else {
             evaluate()
             firstOperand = screenCurrent.textContent
             currentOperation = operator
             screenLast.textContent = `${firstOperand} ${currentOperation}`
         }
-    } else {
-        firstOperand = screenCurrent.textContent
-        currentOperation = operator
-        screenLast.textContent = `${firstOperand} ${currentOperation}`
-        screenCurrent.textContent = ''
-    }
+    } else updateScreen(operator)
+}
+
+function updateScreen(operator) {
+    firstOperand = screenCurrent.textContent
+    currentOperation = operator
+    screenLast.textContent = `${firstOperand} ${currentOperation}`
+    screenCurrent.textContent = ''
 }
 
 function evaluate() {
