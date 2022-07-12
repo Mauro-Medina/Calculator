@@ -34,12 +34,17 @@ header {
 button{
     padding: 10px;
 }
+@font-face {
+    font-family: DSEG7Classic;
+    src: url(DSEG7Classic-Regular.woff);
+  }
 .screen {
     text-align: right;
     background-color: black;
     color: yellow;
     padding: 10px;
     margin-bottom: 10px;
+    font-family: DSEG7Classic;
 }
 .screen-current {
     font-size: 40px;
